@@ -1,3 +1,11 @@
+class Float
+	def descuento(cantidad)
+		num = self * 20 / 100
+		return num
+	end
+end
+
+
 ### Ejercicio 2: Operaciones típicas sobre un hash ###
 
 # Escribir un hash con el menu de un restaurant, la llave es el nombre del plato y el valor es el precio de este.
@@ -64,3 +72,35 @@ puts new_hash
 
 # 7. Dar descuento del 20% para los platos que tengan un nombre de mas 1 una palabra.
 
+mas1palabra = {}
+new_hash.each do |k, v|
+	if k.split(" ").size > 1
+		mas1palabra[k] = v
+	end
+end
+
+puts mas1palabra
+
+vals = []
+mas1palabra.each do |k, v|
+	vals << v
+end
+
+p vals
+
+newvals = vals.map { |e| e.descuento(20)}
+
+#Redondea, se puede comentar
+newvals = newvals.map { |e| e.round }
+
+
+p newvals
+
+finalhash = {}
+
+newvals.each do |i|
+	mas1palabra.each do |k, v|
+		finalhash[k] = i
+	end
+end
+p finalhash
